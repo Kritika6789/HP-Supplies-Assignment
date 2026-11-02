@@ -1,0 +1,8 @@
+.terragrunt-cache/
+live/*/terraform.tfstate
+live/*/terraform.tfstate.*
+live/*/.terraform/
+live/*/.terraform.lock.hcl
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+__pycache__/

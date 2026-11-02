@@ -1,0 +1,11 @@
+.idea
+
+.terraform
+.terraform.lock.hcl
+*.tfstate*
+*.auto.tfvars
+test/vendor
+test/vendor.orig
+
+.local
+.vscode

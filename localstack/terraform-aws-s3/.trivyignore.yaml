@@ -1,0 +1,5 @@
+misconfigurations:
+  - id: AVD-AWS-0057
+    paths:
+      - "resources/provisioning-policy/data.tf"
+    statement: There is no current method to restrict these policies to the specific resources since they are meant for provisioning

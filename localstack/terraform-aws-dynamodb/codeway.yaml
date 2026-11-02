@@ -1,0 +1,36 @@
+resources:
+  repositories:
+    - repository: templates
+      type: githubenterprise
+      name: codeway/templates
+      endpoint: ghe
+
+trigger: # Trigger on branches
+  batch: true
+  branches:
+    include:
+      - master
+
+pr: # Trigger on pull requests towards branches
+  autoCancel: false
+  branches:
+    include:
+      - master
+
+variables:
+  - group: Defaults
+  - group: Terraform
+
+stages:
+- template: templates/runway-terraform-module-v3.yaml@templates
+  parameters:
+    gheToken: $(ghe_auth_token)
+    gheUser: $(ghe_user)
+    versionMajorMinor: '3.0'
+    tflintSecureFile: 'tflint.hcl'
+    testScenarios:
+      - name: 'west'
+        externalId: $(integration_external_id)
+        roleArn: $(integration_role_arn)
+        terratestEnvVars:
+          TF_VAR_region: $(terratest_west_region)
